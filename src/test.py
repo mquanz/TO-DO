@@ -1,16 +1,21 @@
 from to_do import *
 
 #Test
-insert_elements('Aufstehen')
-insert_elements('Duschen')
-insert_elements('Frühstück')
-insert_elements('Arbeit')
-insert_elements('Coden')
-insert_elements('Koten')
+insert_element('Aufstehen')
+insert_element('Duschen')
+insert_element('Frühstück')
+insert_element('Arbeit')
+insert_element('Coden')
+insert_element('Koten')
 
 print_elements()
 print()
 
 delete_element(6)
+
+print_elements()
+print()
+
+mark_done_element(1)
 
 print_elements()

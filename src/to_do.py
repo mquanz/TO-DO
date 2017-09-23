@@ -5,8 +5,11 @@ class Task:
 
 task_list = []
 
-def insert_elements(description):
+def insert_element(description):
     task_list.append(Task(description))
+    
+def mark_done_element(number):
+    task_list[number-1].done = True
 
 def print_elements():
     number = 0
