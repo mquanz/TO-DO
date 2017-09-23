@@ -9,4 +9,6 @@ def print_elements():
         number = number + 1
         print(number,task)
 
+def delete_element(number):
+    task_list.pop(number - 1)
 
