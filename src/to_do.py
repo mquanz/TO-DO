@@ -1,14 +1,24 @@
+class Task:
+    def __init__(self, description):
+        self.description = description
+        self.done = False 
+
 task_list = []
 
-def insert_elements(task):
-    task_list.append(task)
+def insert_elements(description):
+    task_list.append(Task(description))
 
 def print_elements():
     number = 0
     for task in task_list:
         number = number + 1
-        print(number,task)
+        if task.done:
+            status = '[x]'
+        else:
+            status = '[ ]'
+        print(number,status,task.description)
 
 def delete_element(number):
     task_list.pop(number - 1)
+
 
