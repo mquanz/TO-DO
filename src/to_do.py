@@ -30,10 +30,7 @@ def delete_element(number):
 
 def serialize():
     dicts = [task.__dict__ for task in task_list]
-    json_string = json.dumps(dicts)
-    obj = open(FILENAME, 'wb')
-    obj.write(json_string.encode('utf-8'))
-    obj.close
+    return json.dumps(dicts)
 
 def deserialize(json_string):
     dicts = json.loads(json_string)
@@ -41,3 +38,8 @@ def deserialize(json_string):
     for dic in dicts:
         tasks.append(Task(dic['description'],dic['done']))
     task_list[:] = tasks
+
+def export():
+    obj = open(FILENAME, 'wb')
+    obj.write(serialize().encode('utf-8'))
+    obj.close
