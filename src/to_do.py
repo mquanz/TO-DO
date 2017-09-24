@@ -1,7 +1,9 @@
+import json
+
 class Task:
-    def __init__(self, description):
+    def __init__(self, description, done = False):
         self.description = description
-        self.done = False 
+        self.done = done
 
 task_list = []
 
@@ -24,4 +26,14 @@ def print_elements():
 def delete_element(number):
     task_list.pop(number - 1)
 
+def serialize():
+    dicts = [task.__dict__ for task in task_list]
+    return json.dumps(dicts)
+
+def deserialize(json_string):
+    dicts = json.loads(json_string)
+    tasks = []
+    for dic in dicts:
+        tasks.append(Task(dic['description'],dic['done']))
+    task_list[:] = tasks
 

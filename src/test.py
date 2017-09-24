@@ -19,3 +19,18 @@ print()
 mark_done_element(1)
 
 print_elements()
+print()
+
+a = serialize()
+
+print(a)
+print()
+
+insert_element('Koten')
+
+print_elements()
+print()
+
+print(deserialize(a))
+
+print_elements()
