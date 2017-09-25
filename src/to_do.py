@@ -9,8 +9,8 @@ class Task:
 
 task_list = []
 
-def insert_element(description):
-    task_list.append(Task(description))
+def insert_element(task_description):
+       task_list.append(Task(task_description))
     
 def mark_done_element(number):
     task_list[number-1].done = True
