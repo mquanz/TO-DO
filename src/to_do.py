@@ -44,4 +44,14 @@ def export():
     obj.write(serialize().encode('utf-8'))
     obj.close
 
-print('Welcome to TO-DO-List BIAAAAATCH!')
+print('Welcome to TO-DO-List!')
+print('You can add elements to the list by typing "add <element>", delete elements by typing delete <number>, print the TO-DO-List by typing "print"')
+
+while True:
+    user_input = input('> ')
+    if user_input[0:3] == 'add':
+        insert_element(user_input[4:])
+    if user_input[0:6] == 'delete':
+        delete_element(int(user_input[7:]))
+    if user_input[0:5] == 'print':
+        print_elements()
