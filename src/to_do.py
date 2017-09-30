@@ -43,3 +43,5 @@ def export():
     obj = open(FILENAME, 'wb')
     obj.write(serialize().encode('utf-8'))
     obj.close
+
+print('Welcome to TO-DO-List BIAAAAATCH!')
