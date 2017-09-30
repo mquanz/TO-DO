@@ -45,7 +45,11 @@ def export():
     obj.close
 
 print('Welcome to TO-DO-List!')
-print('You can add elements to the list by typing "add <element>", delete elements by typing delete <number>, print the TO-DO-List by typing "print"')
+print('commands:')
+print('"add <element>": Add element to the TO-DO-List')
+print('"delete <number>": Delete an element')
+print('"print": Print the TO-DO-List')
+print('"mark <number>": Mark done element.')
 
 while True:
     user_input = input('> ')
@@ -55,3 +59,5 @@ while True:
         delete_element(int(user_input[7:]))
     if user_input[0:5] == 'print':
         print_elements()
+    if user_input[0:4] == 'mark':
+        mark_done_element(int(user_input[5:]))
