@@ -47,17 +47,19 @@ def export():
 print('Welcome to TO-DO-List!')
 print('commands:')
 print('"add <element>": Add element to the TO-DO-List')
-print('"delete <number>": Delete an element')
 print('"print": Print the TO-DO-List')
+print('"delete <number>": Delete an element')
 print('"mark <number>": Mark done element.')
 
 while True:
     user_input = input('> ')
     if user_input[0:3] == 'add':
         insert_element(user_input[4:])
-    if user_input[0:6] == 'delete':
+    elif user_input[0:6] == 'delete':
         delete_element(int(user_input[7:]))
-    if user_input[0:5] == 'print':
+    elif user_input[0:5] == 'print':
         print_elements()
-    if user_input[0:4] == 'mark':
+    elif user_input[0:4] == 'mark':
         mark_done_element(int(user_input[5:]))
+    else:
+        print('Das habe ich nicht verstanden. Bitte wiederhole deine Eingabe.')
