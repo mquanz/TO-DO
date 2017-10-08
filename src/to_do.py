@@ -45,21 +45,21 @@ def export():
     obj.close
 
 print('Welcome to TO-DO-List!')
-print('commands:')
-print('"add <element>": Add element to the TO-DO-List')
+print('Commands:')
+print('"add: <element>": Add element to the TO-DO-List')
 print('"print": Print the TO-DO-List')
-print('"delete <number>": Delete an element')
-print('"mark <number>": Mark done element.')
+print('"delete: <number>": Delete an element')
+print('"mark: <number>": Mark done element.')
 
 while True:
     user_input = input('> ')
-    if user_input[0:3] == 'add':
-        insert_element(user_input[4:])
-    elif user_input[0:6] == 'delete':
+    if user_input[0:user_input.find(':')] == 'add':
+        insert_element(user_input[5:])
+    elif user_input[0:user_input.find(':')] == 'delete':
         delete_element(int(user_input[7:]))
     elif user_input[0:5] == 'print':
         print_elements()
-    elif user_input[0:4] == 'mark':
+    elif user_input[0:user_input.find(':')] == 'mark':
         mark_done_element(int(user_input[5:]))
     else:
-        print('Das habe ich nicht verstanden. Bitte wiederhole deine Eingabe.')
+        print('Please repeat the input.')
