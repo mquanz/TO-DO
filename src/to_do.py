@@ -53,13 +53,23 @@ print('"mark: <number>": Mark done element.')
 
 while True:
     user_input = input('> ')
-    if user_input[0:user_input.find(':')] == 'add':
-        insert_element(user_input[5:])
-    elif user_input[0:user_input.find(':')] == 'delete':
-        delete_element(int(user_input[7:]))
+    x = user_input.find(':')
+    if user_input[0:x] == 'add':
+        x = x + 1
+        while user_input[x] == ' ':
+            x = x + 1
+        insert_element(user_input[x:])
+    elif user_input[0:x] == 'delete':
+        x = x + 1
+        while user_input[x] == ' ':
+            x = x + 1
+        delete_element(int(user_input[x:]))
     elif user_input[0:5] == 'print':
         print_elements()
-    elif user_input[0:user_input.find(':')] == 'mark':
-        mark_done_element(int(user_input[5:]))
+    elif user_input[0:x] == 'mark':
+        x = x + 1
+        while user_input[x] == ' ':
+            x = x + 1
+        mark_done_element(int(user_input[x:]))
     else:
         print('Please repeat the input.')
