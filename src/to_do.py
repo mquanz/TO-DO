@@ -43,6 +43,11 @@ def export():
     obj = open(FILENAME, 'wb')
     obj.write(serialize().encode('utf-8'))
     obj.close
+
+def importe():
+    obj = open(FILENAME, 'r')
+    deserialize(obj.read())
+    obj.close
     
 print('Welcome to TO-DO-List!')
 print('Commands:')
@@ -51,6 +56,7 @@ print('"print": Print the TO-DO-List')
 print('"delete: <number>": Delete an element')
 print('"mark: <number>": Mark done element')
 print('"export": Export list in data.txt')
+print('"import": Import list from data.txt')
 
 while True:
     user_input = input('> ')
@@ -73,6 +79,8 @@ while True:
             x = x + 1
         mark_done_element(int(user_input[x:]))
     elif user_input[0:6] == 'export':
-        export()                    
+        export()
+    elif user_input[0:6] == 'import':
+        importe()
     else:
         print('Please repeat the input.')
