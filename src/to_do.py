@@ -8,6 +8,7 @@ print('"delete: <number>": Delete an element')
 print('"mark: <number>": Mark done element')
 print('"export": Export list in data.txt')
 print('"import": Import list from data.txt')
+print('"clear": Clear list')
 
 while True:
     user_input = input('> ')
@@ -33,5 +34,7 @@ while True:
         export()
     elif user_input[0:6] == 'import':
         importe()
+    elif user_input[0:5] == 'clear':
+        clear_list()
     else:
         print('Please repeat the input.')

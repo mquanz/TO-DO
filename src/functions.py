@@ -48,3 +48,6 @@ def importe():
     obj = open(FILENAME, 'r')
     deserialize(obj.read())
     obj.close
+
+def clear_list():
+    task_list[:] = []

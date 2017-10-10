@@ -1,1 +1,1 @@
-[{"description": "Wenn", "done": false}, {"description": "das", "done": false}, {"description": "jetzt", "done": false}, {"description": "angezeigt", "done": false}, {"description": "wird", "done": false}, {"description": "funzt import", "done": false}]
+[{"description": "Aufstehen", "done": true}, {"description": "Coden", "done": true}, {"description": "Koten", "done": true}, {"description": "Fr\u00fchst\u00fccken", "done": false}, {"description": "Schlafen", "done": false}]
