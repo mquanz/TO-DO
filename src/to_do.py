@@ -12,24 +12,24 @@ print('"clear": Clear list')
 
 while True:
     user_input = input('> ')
-    x = user_input.find(':')
-    if user_input[0:x] == 'add':
-        x = x + 1
-        while user_input[x] == ' ':
-            x = x + 1
-        insert_element(user_input[x:])
-    elif user_input[0:x] == 'delete':
-        x = x + 1
-        while user_input[x] == ' ':
-            x = x + 1
-        delete_element(int(user_input[x:]))
+    position = user_input.find(':')
+    if user_input[0:position] == 'add':
+        position = position + 1
+        while user_input[position] == ' ':
+            position = position + 1
+        insert_element(user_input[position:])
+    elif user_input[0:position] == 'delete':
+        position = position + 1
+        while user_input[position] == ' ':
+            position = position + 1
+        delete_element(int(user_input[position:]))
     elif user_input[0:5] == 'print':
         print_elements()
-    elif user_input[0:x] == 'mark':
-        x = x + 1
-        while user_input[x] == ' ':
-            x = x + 1
-        mark_done_element(int(user_input[x:]))
+    elif user_input[0:position] == 'mark':
+        position = position + 1
+        while user_input[position] == ' ':
+            position = position + 1
+        mark_done_element(int(user_input[position:]))
     elif user_input[0:6] == 'export':
         export()
     elif user_input[0:6] == 'import':
