@@ -9,6 +9,7 @@ print('"mark: <number>": Mark done element')
 print('"export": Export list in data.txt')
 print('"import": Import list from data.txt')
 print('"clear": Clear list')
+print('"quit": Quit program')
 
 while True:
     user_input = input('> ')
@@ -36,5 +37,7 @@ while True:
         importe()
     elif user_input == 'clear':
         clear_list()
+    elif user_input == 'quit':
+        break
     else:
         print('Please repeat the input.')
