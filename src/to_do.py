@@ -23,18 +23,18 @@ while True:
         while user_input[position] == ' ':
             position = position + 1
         delete_element(int(user_input[position:]))
-    elif user_input[0:5] == 'print':
+    elif user_input == 'print':
         print_elements()
     elif user_input[0:position] == 'mark':
         position = position + 1
         while user_input[position] == ' ':
             position = position + 1
         mark_done_element(int(user_input[position:]))
-    elif user_input[0:6] == 'export':
+    elif user_input == 'export':
         export()
-    elif user_input[0:6] == 'import':
+    elif user_input == 'import':
         importe()
-    elif user_input[0:5] == 'clear':
+    elif user_input == 'clear':
         clear_list()
     else:
         print('Please repeat the input.')
