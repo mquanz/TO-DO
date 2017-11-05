@@ -1,6 +1,6 @@
 from functions import *
     
-print('Welcome to TO-DO-List!')
+print('Welcome to TO-DO-List!\n')
 print('Commands:')
 print('"add: <element>": Add element to the TO-DO-List')
 print('"print": Print the TO-DO-List')
@@ -11,6 +11,9 @@ print('"import": Import list from data.txt')
 print('"clear": Clear list')
 print('"quit": Quit program')
 
+task_list = TaskList()
+print('\nWith starting this program you just created a new list on ' + task_list.creation_date + '!')
+
 while True:
     user_input = input('> ')
     position = user_input.find(':')
@@ -18,25 +21,25 @@ while True:
         position = position + 1
         while user_input[position] == ' ':
             position = position + 1
-        insert_element(user_input[position:])
+        task_list.insert_task(user_input[position:])
     elif user_input[0:position] == 'delete':
         position = position + 1
         while user_input[position] == ' ':
             position = position + 1
-        delete_element(int(user_input[position:]))
+        task_list.delete_task(int(user_input[position:]))
     elif user_input == 'print':
-        print_elements()
+        task_list.print_list()
     elif user_input[0:position] == 'mark':
         position = position + 1
         while user_input[position] == ' ':
             position = position + 1
-        mark_done_element(int(user_input[position:]))
+        task_list.mark_done(int(user_input[position:]))
     elif user_input == 'export':
-        export()
+        task_list.export()
     elif user_input == 'import':
-        importe()
+        task_list.importe()
     elif user_input == 'clear':
-        clear_list()
+        task_list.clear_list()
     elif user_input == 'quit':
         break
     else:
