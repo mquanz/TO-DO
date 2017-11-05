@@ -1,1 +1,1 @@
-[{"done": true, "description": "Aufstehen"}, {"done": true, "description": "Coden"}, {"done": true, "description": "Koten"}, {"done": false, "description": "Fr\u00fchst\u00fccken"}, {"done": false, "description": "Schlafen"}]
+[{"description": "Abwasch", "done": false}, {"description": "Schlafen", "done": true}, {"description": "Essen", "done": true}, {"description": "Ballern", "done": true}]
