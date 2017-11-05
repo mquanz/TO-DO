@@ -11,6 +11,9 @@ class TaskList:
 
     def insert_task(self, task):
         self.task_list.append(Task(task))
+
+    def mark_done(self, number):
+        self.task_list[number-1].done = True
         
 class Task:
 
@@ -19,15 +22,24 @@ class Task:
         self.done = done
 
 
-#task_list1 = TaskList()
+#Test
 
-#task_list1.insert_task('Test')
+#Create instance of TaskList
+task_list1 = TaskList()
 
-#print(task_list1.task_list[0].description)
+#Insert element and print
+task_list1.insert_task('Test')
+
+print(task_list1.task_list[0].description)
+
+#Mark done element and print
+task_list1.mark_done(1)
+
+print(task_list1.task_list[0].done)
 
     
-def mark_done_element(number):
-    task_list[number-1].done = True
+#def mark_done_element(number):
+#    task_list[number-1].done = True
 
 def print_elements():
     number = 0
