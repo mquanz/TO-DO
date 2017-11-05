@@ -1,16 +1,30 @@
 import json
+import time
 
 FILENAME = 'data.txt'
 
+class TaskList:
+
+    def __init__(self):
+        self.task_list = []
+        self.creation_date = time.strftime("%d/%m/%Y")
+
+    def insert_task(self, task):
+        self.task_list.append(Task(task))
+        
 class Task:
+
     def __init__(self, description, done = False):
         self.description = description
         self.done = done
 
-task_list = []
 
-def insert_element(task_description):
-       task_list.append(Task(task_description))
+#task_list1 = TaskList()
+
+#task_list1.insert_task('Test')
+
+#print(task_list1.task_list[0].description)
+
     
 def mark_done_element(number):
     task_list[number-1].done = True
