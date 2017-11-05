@@ -7,7 +7,7 @@ class TaskList:
 
     def __init__(self):
         self.task_list = []
-        self.creation_date = time.strftime("%d/%m/%Y")
+        self.creation_date = time.strftime("%d/%m/%Y %H:%M")
 
     def insert_task(self, task):
         self.task_list.append(Task(task))

@@ -12,7 +12,7 @@ print('"clear": Clear list')
 print('"quit": Quit program')
 
 task_list = TaskList()
-print('\nWith starting this program you just created a new list on ' + task_list.creation_date + '!')
+print('\nWith starting this program you just created a new list at ' + task_list.creation_date + '!')
 
 while True:
     user_input = input('> ')
