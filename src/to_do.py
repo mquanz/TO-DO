@@ -9,6 +9,7 @@ print('"mark: <number>": Mark done element')
 print('"export": Export list in data.txt')
 print('"import": Import list from data.txt')
 print('"clear": Clear list')
+print('"info": Information about this list')
 print('"quit": Quit program')
 
 task_list = TaskList()
@@ -40,6 +41,8 @@ while True:
         task_list.importe()
     elif user_input == 'clear':
         task_list.clear_list()
+    elif user_input == 'info':
+        task_list.info()
     elif user_input == 'quit':
         break
     else:

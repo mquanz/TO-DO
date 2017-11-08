@@ -30,13 +30,17 @@ class TaskList:
 
     def serialize(self):
         dicts = [task.__dict__ for task in self.task_list]
+        dicts.append({"creation" : self.creation_date})
         return json.dumps(dicts)
 
     def deserialize(self, json_string):
         dicts = json.loads(json_string)
-        tasks = []
+        tasks = []        
         for dic in dicts:
-            tasks.append(Task(dic['description'],dic['done']))
+            if 'description' in dic.keys():
+                tasks.append(Task(dic['description'],dic['done']))
+            else:
+                self.creation_date = dic['creation']
         self.task_list = tasks
 
     def export(self):
@@ -51,6 +55,9 @@ class TaskList:
 
     def clear_list(self):
         self.task_list = []
+
+    def info(self):
+        print('This TaskList was created at ' + self.creation_date + '.')
         
 class Task:
 
