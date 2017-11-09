@@ -1,7 +1,5 @@
 import unittest
 from functions import *
-import io
-import sys
 
 class TestFunctions(unittest.TestCase):
 
@@ -11,8 +9,6 @@ class TestFunctions(unittest.TestCase):
         self.task_list1.insert_task('ist')
         self.task_list1.insert_task('ein')
         self.task_list1.insert_task('Test')
-        self.task_list1.insert_task('Ha')
-        self.task_list1.insert_task('Ha!')
 
     def tearDown(self):
         pass
@@ -32,11 +28,8 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(self.task_list1.task_list[0].description, 'Test')
  
     def test_print_list(self):
-        captured_output = io.StringIO()
-        sys.stdout = captured_output
-        self.task_list1.print_list()
-        sys.stdout = sys.__stdout__
-        print ('\nCaptured:\n'+ captured_output.getvalue())
+        self.assertEqual(self.task_list1.print_list(), ['1 [ ] Das', '2 [ ] ist', '3 [ ] ein', '4 [ ] Test'])
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -29,7 +29,9 @@ while True:
             position = position + 1
         task_list.delete_task(int(user_input[position:]))
     elif user_input == 'print':
-        task_list.print_list()
+        output_list = task_list.print_list()
+        for task in output_list:
+            print(task)        
     elif user_input[0:position] == 'mark':
         position = position + 1
         while user_input[position] == ' ':
