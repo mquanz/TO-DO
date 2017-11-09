@@ -30,6 +30,9 @@ class TestFunctions(unittest.TestCase):
     def test_print_list(self):
         self.assertEqual(self.task_list1.print_list(), ['1 [ ] Das', '2 [ ] ist', '3 [ ] ein', '4 [ ] Test'])
 
+    def test_serialize_deserialize(self):
+        self.assertEqual(self.task_list1, self.task_list1.deserialize(self.task_list1.serialize()))
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -44,6 +44,7 @@ class TaskList:
             else:
                 self.creation_date = dic['creation']
         self.task_list = tasks
+        return self
 
     def export(self):
         obj = open(FILENAME, 'wb')
