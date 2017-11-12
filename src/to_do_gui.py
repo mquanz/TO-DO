@@ -26,6 +26,7 @@ class Window:
     def add_task(self, task):
         user_input = self.add_entry.get()
         task_list1.insert_task(user_input)
+        self.add_entry.delete(0, END)
 
 #optional print
 
