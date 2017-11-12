@@ -20,16 +20,19 @@ class Window:
         self.add_button.bind('<Button-1>', self.add_task)
         self.add_button.grid(row = 1, column = 1)
 
-        self.exit_button = Button(master, text = 'EXIT', command = master.quit)
-        self.exit_button.grid(row = 2) 
+        self.print_button = Button(master, text = 'PRINT')
+        self.print_button.bind('<Button-1>', self.print_tasks)
+        self.print_button.grid(row = 2)
 
-    def add_task(self, task):
+        self.exit_button = Button(master, text = 'EXIT', command = master.quit)
+        self.exit_button.grid(row = 3) 
+
+    def add_task(self, arg):
         user_input = self.add_entry.get()
         task_list1.insert_task(user_input)
         self.add_entry.delete(0, END)
 
-#optional print
-
+    def print_tasks(self, arg):
         output_list = task_list1.print_list()
         for task in output_list:
             print(task)
