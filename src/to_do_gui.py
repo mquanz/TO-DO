@@ -15,6 +15,8 @@ class Window:
         self.label1.grid(row = 0, columnspan = 2)
 
         self.add_entry = Entry(master) 
+        v = StringVar(master, value ='Test')
+        self.add_entry.insert(0, 'Enter a task here..')
         self.add_entry.grid(row = 1)
 
         self.add_button = Button(master, text = 'ADD', bg = 'green')
@@ -23,6 +25,7 @@ class Window:
         self.add_button.grid(row = 1, column = 1)
 
         self.del_entry = Entry(master) 
+        self.del_entry.insert(0, 'Enter a number here...')
         self.del_entry.grid(row = 2)
 
         self.del_button = Button(master, text = 'DELETE', bg = 'red')
