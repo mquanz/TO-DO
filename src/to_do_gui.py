@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import messagebox
 from functions import *
 
 
@@ -46,8 +47,9 @@ class Window:
 
     def print_tasks(self, arg):
         output_list = task_list1.print_list()
-        for task in output_list:
-            print(task)
+        messagebox.showinfo('Task List', output_list)
+#        for task in output_list:
+#            print(task)
         
 
 root = Tk()
