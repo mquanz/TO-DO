@@ -1,5 +1,4 @@
 from tkinter import *
-from tkinter import messagebox
 from functions import *
 
 
@@ -32,13 +31,16 @@ class Window:
         self.print_button.bind('<Button-1>', self.print_tasks)
         self.print_button.grid(row = 3)
 
+        self.text_box = Text(master, height = 10, width = 30)
+        self.text_box.grid(row = 4)
+
         self.exit_button = Button(master, text = 'EXIT', command = master.quit)
-        self.exit_button.grid(row = 4) 
+        self.exit_button.grid(row = 5) 
 
     def add_task(self, arg):
         user_input = self.add_entry.get()
         task_list1.insert_task(user_input)
-        self.add_entry.delete(0, END)
+        self.add_entry.delete(0, END)     
 
     def del_task(self, arg):
         user_input = int(self.del_entry.get())
@@ -46,10 +48,11 @@ class Window:
         self.del_entry.delete(0, END)
 
     def print_tasks(self, arg):
+        self.text_box.delete(1.0, END)
         output_list = task_list1.print_list()
-        messagebox.showinfo('Task List', output_list)
-#        for task in output_list:
-#            print(task)
+        self.text_box.insert(END, 'Your TO-DO-List:')
+        for task in output_list:
+            self.text_box.insert(END, '\n' + task)
         
 
 root = Tk()
