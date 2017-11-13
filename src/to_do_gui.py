@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import messagebox
 from functions import *
 
 
@@ -18,6 +19,7 @@ class Window:
 
         self.add_button = Button(master, text = 'ADD', bg = 'green')
         self.add_button.bind('<Button-1>', self.add_task)
+        self.add_button.bind('<Button-3>', lambda event: self.message_box(event, 'This is the add button, please enter a task.'))
         self.add_button.grid(row = 1, column = 1)
 
         self.del_entry = Entry(master) 
@@ -25,6 +27,7 @@ class Window:
 
         self.del_button = Button(master, text = 'DELETE', bg = 'red')
         self.del_button.bind('<Button-1>', self.del_task)
+        self.del_button.bind('<Button-3>', lambda event: self.message_box(event, 'This is the delete button, please enter a number.'))
         self.del_button.grid(row = 2, column = 1)
 
         self.text_box = Text(master, height = 10, width = 30)
@@ -33,7 +36,10 @@ class Window:
         self.exit_button = Button(master, text = 'EXIT', command = master.quit)
         self.exit_button.grid(row = 4) 
 
-    def add_task(self, arg):
+    def message_box(self, event, text):
+        messagebox.showinfo('Info', text)
+
+    def add_task(self, event):
         user_input = self.add_entry.get()
         task_list1.insert_task(user_input)
         self.add_entry.delete(0, END)
@@ -46,7 +52,7 @@ class Window:
         for task in output_list:
             self.text_box.insert(END, '\n' + task)    
 
-    def del_task(self, arg):
+    def del_task(self, event):
         user_input = int(self.del_entry.get())
         task_list1.delete_task(user_input)
         self.del_entry.delete(0, END)
