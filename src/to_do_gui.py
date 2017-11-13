@@ -15,8 +15,9 @@ class Window:
         self.label1.grid(row = 0, columnspan = 2)
 
         self.add_entry = Entry(master) 
-        v = StringVar(master, value ='Test')
-        self.add_entry.insert(0, 'Enter a task here..')
+        self.add_entry.insert(0, 'Enter a task here...')
+        self.add_entry.config(fg = 'grey')
+        self.add_entry.bind('<Button-1>', lambda event: self.entry_click(event, 'Enter a task here...', self.add_entry))
         self.add_entry.grid(row = 1)
 
         self.add_button = Button(master, text = 'ADD', bg = 'green')
@@ -26,6 +27,8 @@ class Window:
 
         self.del_entry = Entry(master) 
         self.del_entry.insert(0, 'Enter a number here...')
+        self.del_entry.config(fg = 'grey')
+        self.del_entry.bind('<Button-1>', lambda event: self.entry_click(event, 'Enter a number here...', self.del_entry))
         self.del_entry.grid(row = 2)
 
         self.del_button = Button(master, text = 'DELETE', bg = 'red')
@@ -38,6 +41,11 @@ class Window:
 
         self.exit_button = Button(master, text = 'EXIT', command = master.quit)
         self.exit_button.grid(row = 4) 
+
+    def entry_click(self, event, default_text, entry):
+        if entry.get() == default_text:
+            entry.delete(0, END)
+            entry.config(fg = 'black')
 
     def message_box(self, event, text):
         messagebox.showinfo('Info', text)
