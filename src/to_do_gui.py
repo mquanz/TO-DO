@@ -36,11 +36,23 @@ class Window:
         self.del_button.bind('<Button-3>', lambda event: self.message_box(event, 'This is the delete button, please enter a number.'))
         self.del_button.grid(row = 2, column = 1)
 
+        self.mark_button = Button(master, text = 'Mark', bg = 'light blue')
+        self.mark_button.bind('<Button-1>', self.mark_task)
+        self.mark_button.bind('<Button-3>', lambda event: self.message_box(event, 'This is the mark button, please enter a number.'))
+        self.mark_button.grid(row = 3, column = 1)
+
+        self.mark_entry = Entry(master) 
+        self.mark_entry.insert(0, 'Enter a number here...')
+        self.mark_entry.config(fg = 'grey')
+        self.mark_entry.bind('<Button-1>', lambda event: self.entry_click(event, 'Enter a number here...', self.mark_entry))
+        self.mark_entry.grid(row = 3)
+
+
         self.text_box = Text(master, height = 10, width = 30)
-        self.text_box.grid(row = 3)
+        self.text_box.grid(row = 4)
 
         self.exit_button = Button(master, text = 'EXIT', command = master.quit)
-        self.exit_button.grid(row = 4) 
+        self.exit_button.grid(row = 5) 
 
     def entry_click(self, event, default_text, entry):
         if entry.get() == default_text:
@@ -74,7 +86,20 @@ class Window:
         output_list = task_list1.print_list()
         self.text_box.insert(END, 'Your TO-DO-List:') 
         for task in output_list:
-            self.text_box.insert(END, '\n' + task)    
+            self.text_box.insert(END, '\n' + task) 
+
+    def mark_task(self, event):
+        user_input = int(self.mark_entry.get())
+        task_list1.mark_done(user_input)
+        self.mark_entry.delete(0, END)
+
+#print list in text box
+
+        self.text_box.delete(1.0, END)
+        output_list = task_list1.print_list()
+        self.text_box.insert(END, 'Your TO-DO-List:') 
+        for task in output_list:
+            self.text_box.insert(END, '\n' + task)     
         
 
 root = Tk()
