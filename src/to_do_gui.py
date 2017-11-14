@@ -48,7 +48,7 @@ class Window:
         self.mark_entry.grid(row = 3)
 
         self.clear_button = Button(master, text = 'CLEAR', bg = 'red')
-        self.clear_button.bind('<Button-1>', self.clear_tasks)
+        self.clear_button.bind('<Button-1>', self.warning_box)
         self.clear_button.bind('<Button-3>', lambda event: self.message_box(event, 'This is the mark button, please enter a number.'))
         self.clear_button.grid(row = 4, column = 1)
 
@@ -65,6 +65,11 @@ class Window:
 
     def message_box(self, event, text):
         messagebox.showinfo('Info', text)
+
+    def warning_box(self, event):
+        result = messagebox.askquestion('Clear', 'Are You Sure?', icon = 'warning')
+        if result == 'yes':
+            self.clear_tasks()
 
     def print_tasks(self):
         self.text_box.delete(1.0, END)
@@ -91,7 +96,7 @@ class Window:
         self.mark_entry.delete(0, END)
         self.print_tasks()
 
-    def clear_tasks(self, event):
+    def clear_tasks(self):
         task_list1.clear_list()    
         self.print_tasks()        
 
