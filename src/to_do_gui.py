@@ -56,6 +56,14 @@ class Window:
         self.info_button.bind('<Button-1>', lambda event: self.message_box(event, task_list1.info()))
         self.info_button.grid(row = 5, column = 0)
 
+        self.export_button = Button(master, text = 'EXPORT', bg = 'yellow')
+        self.export_button.bind('<Button-1>', task_list1.export)
+        self.export_button.grid(row = 5, column = 1)
+
+        self.import_button = Button(master, text = 'IMPORT', bg = 'yellow')
+        self.import_button.bind('<Button-1>', task_list1.importe)
+        self.import_button.grid(row = 6, column = 1)
+
         self.text_box = Text(master, height = 10, width = 30)
         self.text_box.grid(row = 6)
 
