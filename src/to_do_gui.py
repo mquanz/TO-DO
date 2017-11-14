@@ -50,13 +50,17 @@ class Window:
         self.clear_button = Button(master, text = 'CLEAR', bg = 'red')
         self.clear_button.bind('<Button-1>', self.warning_box)
         self.clear_button.bind('<Button-3>', lambda event: self.message_box(event, 'This is the mark button, please enter a number.'))
-        self.clear_button.grid(row = 4, column = 1)
+        self.clear_button.grid(row = 4, column = 0)
+
+        self.info_button = Button(master, text = 'INFO', bg = 'yellow')
+        self.info_button.bind('<Button-1>', lambda event: self.message_box(event, task_list1.info()))
+        self.info_button.grid(row = 5, column = 0)
 
         self.text_box = Text(master, height = 10, width = 30)
-        self.text_box.grid(row = 4)
+        self.text_box.grid(row = 6)
 
         self.exit_button = Button(master, text = 'EXIT', command = master.quit)
-        self.exit_button.grid(row = 5) 
+        self.exit_button.grid(row = 7) 
 
     def entry_click(self, event, default_text, entry):
         if entry.get() == default_text:

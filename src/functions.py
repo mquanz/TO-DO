@@ -60,7 +60,7 @@ class TaskList:
         self.task_list = []
 
     def info(self):
-        print('This TaskList was created at ' + self.creation_date + ' and contains ' + str(len(self.task_list)) + ' tasks.')
+        return 'This TaskList was created at ' + self.creation_date + ' and contains ' + str(len(self.task_list)) + ' tasks.'
         
 class Task:
 

@@ -44,7 +44,7 @@ while True:
     elif user_input == 'clear':
         task_list.clear_list()
     elif user_input == 'info':
-        task_list.info()
+        print(task_list.info())
     elif user_input == 'quit':
         break
     else:
