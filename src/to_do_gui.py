@@ -57,11 +57,11 @@ class Window:
         self.info_button.grid(row = 5, column = 0)
 
         self.export_button = Button(master, text = 'EXPORT', bg = 'yellow')
-        self.export_button.bind('<Button-1>', task_list1.export)
+        self.export_button.bind('<Button-1>', self.export)
         self.export_button.grid(row = 5, column = 1)
 
         self.import_button = Button(master, text = 'IMPORT', bg = 'yellow')
-        self.import_button.bind('<Button-1>', task_list1.importe)
+        self.import_button.bind('<Button-1>', self.importe)
         self.import_button.grid(row = 6, column = 1)
 
         self.text_box = Text(master, height = 10, width = 30)
@@ -94,7 +94,7 @@ class Window:
         user_input = self.add_entry.get()
         task_list1.insert_task(user_input)
         self.add_entry.delete(0, END)
-        self.print_tasks()   
+        self.print_tasks()  
 
     def del_task(self, event):
         user_input = int(self.del_entry.get())
@@ -110,7 +110,15 @@ class Window:
 
     def clear_tasks(self):
         task_list1.clear_list()    
-        self.print_tasks()        
+        self.print_tasks()
+
+    def export(self, event):
+        task_list1.export()
+        self.message_box(event, 'Your Task List is written to data.txt')  
+
+    def importe(self, event):
+        task_list1.importe() 
+        self.print_tasks()     
 
 root = Tk()
 create_window = Window(root)
