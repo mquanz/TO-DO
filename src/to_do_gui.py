@@ -1,6 +1,5 @@
 from tkinter import *
 from tkinter import messagebox
-
 from functions import *
 
 
@@ -64,12 +63,12 @@ class Window:
         self.import_button.bind('<Button-1>', self.importe)
         self.import_button.grid(row = 6, column = 0)
 
-        self.text_box = Text(master, height = 10, width = 30, relief = 'sunken')
+        self.text_box = Text(master, height = 10, width = 35, relief = 'sunken')
         self.text_box.grid(row = 4)
 
         self.vscroll = Scrollbar(master, orient=VERTICAL, command=self.text_box.yview)
         self.text_box['yscroll'] = self.vscroll.set
-        self.vscroll.grid(row = 4, column = 1, sticky = W)
+        self.vscroll.grid(row = 4, column = 0, sticky = E)
 
         self.exit_button = Button(master, text = 'EXIT', bg = 'red', command = master.quit)
         self.exit_button.grid(row = 6, column = 1) 
