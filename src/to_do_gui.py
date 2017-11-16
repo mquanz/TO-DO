@@ -63,12 +63,22 @@ class Window:
         self.import_button.bind('<Button-1>', self.importe)
         self.import_button.grid(row = 6, column = 0)
 
-        self.text_box = Text(master, height = 10, width = 35, relief = 'sunken')
-        self.text_box.grid(row = 4)
+        # create a Frame for the Text and Scrollbar
+        self.txt_frm = Frame(master, width=200, height=200)
+        self.txt_frm.grid(row = 4)
+        # consistent gui size
+        self.txt_frm.grid_propagate(False)
+        # implement stretchability
+        self.txt_frm.grid_rowconfigure(0, weight=1)
+        self.txt_frm.grid_columnconfigure(0, weight=1)
 
-        self.vscroll = Scrollbar(master, orient=VERTICAL, command=self.text_box.yview)
+        self.text_box = Text(self.txt_frm, borderwidth=3, relief="sunken")
+        self.text_box.config(font=("consolas", 10), undo=True, wrap='word')
+        self.text_box.grid(row = 0, column = 0, sticky = 'nsew', padx=2, pady=2)
+
+        self.vscroll = Scrollbar(self.txt_frm, orient=VERTICAL, command=self.text_box.yview)
         self.text_box['yscroll'] = self.vscroll.set
-        self.vscroll.grid(row = 4, column = 0, sticky = E)
+        self.vscroll.grid(row = 0, column = 1, sticky = 'nsew')
 
         self.exit_button = Button(master, text = 'EXIT', bg = 'red', command = master.quit)
         self.exit_button.grid(row = 6, column = 1) 
