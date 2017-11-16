@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 from functions import *
 
-
+# create instance of class
 task_list1 = TaskList()
 
 class Window:
@@ -11,7 +11,7 @@ class Window:
         self.master = master
         master.title('TO-DO-List')
 
-        self.label1 = Label(master, text = 'Welcome to TO-DO-List - made by Marterminator', font = ('Times', 14))
+        self.label1 = Label(master, text = 'Welcome to TO-DO-List - made by Marterminator', font = ('Times', 14), bd = 15)
         self.label1.grid(row = 0, columnspan = 2)
 
         self.add_entry = Entry(master) 
@@ -75,6 +75,7 @@ class Window:
         self.text_box = Text(self.txt_frm, borderwidth=3, relief="sunken")
         self.text_box.config(font=("consolas", 10), undo=True, wrap='word')
         self.text_box.grid(row = 0, column = 0, sticky = 'nsew', padx=2, pady=2)
+        self.text_box.insert(END, 'Your TO-DO-List:') 
 
         self.vscroll = Scrollbar(self.txt_frm, orient=VERTICAL, command=self.text_box.yview)
         self.text_box['yscroll'] = self.vscroll.set
