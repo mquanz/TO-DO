@@ -20,9 +20,7 @@ class Window:
         self.add_entry.bind('<Button-1>', lambda event: self.entry_click(event, 'Enter a task here...', self.add_entry))
         self.add_entry.grid(row = 1)
 
-        self.add_button = Button(master, text = 'ADD', bg = 'green')
-        self.add_button.bind('<Button-1>', self.add_task)
-        self.add_button.bind('<Button-3>', lambda event: self.message_box(event, 'This is the add button, please enter a task.'))
+        self.add_button = Button(master, text = 'ADD', bg = 'green', command = self.add_task)
         self.add_button.grid(row = 1, column = 1)
 
         self.del_entry = Entry(master) 
@@ -31,14 +29,10 @@ class Window:
         self.del_entry.bind('<Button-1>', lambda event: self.entry_click(event, 'Enter a number here...', self.del_entry))
         self.del_entry.grid(row = 2)
 
-        self.del_button = Button(master, text = 'DELETE', bg = 'orange')
-        self.del_button.bind('<Button-1>', self.del_task)
-        self.del_button.bind('<Button-3>', lambda event: self.message_box(event, 'This is the delete button, please enter a number.'))
+        self.del_button = Button(master, text = 'DELETE', bg = 'orange', command = self.del_task)
         self.del_button.grid(row = 2, column = 1)
 
-        self.mark_button = Button(master, text = 'MARK', bg = 'light blue')
-        self.mark_button.bind('<Button-1>', self.mark_task)
-        self.mark_button.bind('<Button-3>', lambda event: self.message_box(event, 'This is the mark button, please enter a number.'))
+        self.mark_button = Button(master, text = 'MARK', bg = 'light blue', command = self.mark_task)
         self.mark_button.grid(row = 3, column = 1)
 
         self.mark_entry = Entry(master) 
@@ -51,8 +45,7 @@ class Window:
         self.clear_button.bind('<Button-1>', self.warning_box)
         self.clear_button.grid(row = 5, column = 1)
 
-        self.info_button = Button(master, text = 'INFO', bg = 'yellow')
-        self.info_button.bind('<Button-1>', lambda event: self.message_box(event, task_list1.info()))
+        self.info_button = Button(master, text = 'INFO', bg = 'yellow', command = self.info)
         self.info_button.grid(row = 4, column = 1)
 
         self.export_button = Button(master, text = 'EXPORT', bg = 'green')
@@ -72,9 +65,9 @@ class Window:
         self.txt_frm.grid_rowconfigure(0, weight=1)
         self.txt_frm.grid_columnconfigure(0, weight=1)
 
-        self.text_box = Text(self.txt_frm, borderwidth=3, relief="sunken")
-        self.text_box.config(font=("consolas", 10), undo=True, wrap='word')
-        self.text_box.grid(row = 0, column = 0, sticky = 'nsew', padx=2, pady=2)
+        self.text_box = Text(self.txt_frm, borderwidth = 3, relief = 'sunken')
+        self.text_box.config(font=('consolas', 10), undo = True, wrap = 'word')
+        self.text_box.grid(row = 0, column = 0, sticky = 'nsew', padx = 2, pady = 2)
         self.text_box.insert(END, 'Your TO-DO-List:') 
 
         self.vscroll = Scrollbar(self.txt_frm, orient=VERTICAL, command=self.text_box.yview)
@@ -89,7 +82,7 @@ class Window:
             entry.delete(0, END)
             entry.config(fg = 'black')
 
-    def message_box(self, event, text):
+    def message_box(self, text):
         messagebox.showinfo('Info', text)
 
     def warning_box(self, event):
@@ -104,33 +97,36 @@ class Window:
         for task in output_list:
             self.text_box.insert(END, '\n' + task)    
 
-    def add_task(self, event):
+    def add_task(self):
         user_input = self.add_entry.get()
         task_list1.insert_task(user_input)
         self.add_entry.delete(0, END)
         self.print_tasks()  
 
-    def del_task(self, event):
+    def del_task(self):
         user_input = int(self.del_entry.get())
         try:
             task_list1.delete_task(user_input)
         except IndexError:
-            self.message_box(event, 'Your number is out of range.')
+            self.message_box('Your number is out of range.')
         self.del_entry.delete(0, END)
         self.print_tasks()
         
-    def mark_task(self, event):
+    def mark_task(self):
         user_input = int(self.mark_entry.get())
         try:
             task_list1.mark_done(user_input)
         except IndexError:
-            self.message_box(event, 'Your number is out of range.')        
+            self.message_box('Your number is out of range.')        
         self.mark_entry.delete(0, END)
-        self.print_tasks()
+        self.print_tasks()      
 
     def clear_tasks(self):
         task_list1.clear_list()    
         self.print_tasks()
+
+    def info(self):
+        self.message_box(task_list1.info())
 
     def export(self, event):
         task_list1.export()
