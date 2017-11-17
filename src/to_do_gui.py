@@ -112,13 +112,19 @@ class Window:
 
     def del_task(self, event):
         user_input = int(self.del_entry.get())
-        task_list1.delete_task(user_input)
+        try:
+            task_list1.delete_task(user_input)
+        except IndexError:
+            self.message_box(event, 'Your number is out of range.')
         self.del_entry.delete(0, END)
         self.print_tasks()
         
     def mark_task(self, event):
         user_input = int(self.mark_entry.get())
-        task_list1.mark_done(user_input)
+        try:
+            task_list1.mark_done(user_input)
+        except IndexError:
+            self.message_box(event, 'Your number is out of range.')        
         self.mark_entry.delete(0, END)
         self.print_tasks()
 
