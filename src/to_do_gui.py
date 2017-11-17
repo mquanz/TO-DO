@@ -84,7 +84,6 @@ class Window:
 
     def message_box(self, text):
         messagebox.showinfo('Info', text)
-
     def warning_box(self, event):
         result = messagebox.askquestion('Clear', 'Are You Sure?', icon = 'warning')
         if result == 'yes':
