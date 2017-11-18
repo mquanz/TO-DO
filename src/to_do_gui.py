@@ -14,7 +14,7 @@ class Window:
         self.label1 = Label(master, text = 'Welcome to TO-DO-List - made by Marterminator', font = ('Times', 14), bd = 15)
         self.label1.grid(row = 0, columnspan = 2)
 
-        self.add_entry = Entry(master) 
+        self.add_entry = Entry(master, width = 32) 
         self.add_entry.insert(0, 'Enter a task here...')
         self.add_entry.config(fg = 'grey')
         self.add_entry.bind('<Button-1>', lambda event: self.entry_click(event, 'Enter a task here...', self.add_entry))
@@ -23,7 +23,7 @@ class Window:
         self.add_button = Button(master, text = 'ADD', bg = 'green', command = self.add_task)
         self.add_button.grid(row = 1, column = 1)
 
-        self.del_entry = Entry(master) 
+        self.del_entry = Entry(master, width = 32) 
         self.del_entry.insert(0, 'Enter a number here...')
         self.del_entry.config(fg = 'grey')
         self.del_entry.bind('<Button-1>', lambda event: self.entry_click(event, 'Enter a number here...', self.del_entry))
@@ -35,7 +35,7 @@ class Window:
         self.mark_button = Button(master, text = 'MARK', bg = 'light blue', command = self.mark_task)
         self.mark_button.grid(row = 3, column = 1)
 
-        self.mark_entry = Entry(master) 
+        self.mark_entry = Entry(master, width = 32) 
         self.mark_entry.insert(0, 'Enter a number here...')
         self.mark_entry.config(fg = 'grey')
         self.mark_entry.bind('<Button-1>', lambda event: self.entry_click(event, 'Enter a number here...', self.mark_entry))
