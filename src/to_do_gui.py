@@ -41,15 +41,13 @@ class Window:
         self.mark_entry.bind('<Button-1>', lambda event: self.entry_click(event, 'Enter a number here...', self.mark_entry))
         self.mark_entry.grid(row = 3)
 
-        self.clear_button = Button(master, text = 'CLEAR', bg = 'red')
-        self.clear_button.bind('<Button-1>', self.warning_box)
+        self.clear_button = Button(master, text = 'CLEAR', bg = 'red', command = self.warning_box)
         self.clear_button.grid(row = 5, column = 1)
 
         self.info_button = Button(master, text = 'INFO', bg = 'yellow', command = self.info)
         self.info_button.grid(row = 4, column = 1)
 
-        self.export_button = Button(master, text = 'EXPORT', bg = 'green')
-        self.export_button.bind('<Button-1>', self.export)
+        self.export_button = Button(master, text = 'EXPORT', bg = 'green', command = self.export)
         self.export_button.grid(row = 5, column = 0)
 
         self.import_button = Button(master, text = 'IMPORT', bg = 'green')
@@ -84,7 +82,7 @@ class Window:
 
     def message_box(self, text):
         messagebox.showinfo('Info', text)
-    def warning_box(self, event):
+    def warning_box(self):
         result = messagebox.askquestion('Clear', 'Are You Sure?', icon = 'warning')
         if result == 'yes':
             self.clear_tasks()
@@ -127,9 +125,9 @@ class Window:
     def info(self):
         self.message_box(task_list1.info())
 
-    def export(self, event):
+    def export(self):
         task_list1.export()
-        self.message_box(event, 'Your Task List is written to data.txt')  
+        self.message_box('Your Task List is written to data.txt')  
 
     def importe(self, event):
         task_list1.importe() 
