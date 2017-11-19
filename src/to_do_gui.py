@@ -109,6 +109,7 @@ class Window:
             self.message_box('Your number is out of range.')
         self.del_entry.delete(0, END)
         self.print_tasks()
+        self.status_bar('Deleted task ' + str(user_input) + '.')
         
     def mark_task(self):
         user_input = int(self.mark_entry.get())
@@ -117,22 +118,26 @@ class Window:
         except IndexError:
             self.message_box('Your number is out of range.')        
         self.mark_entry.delete(0, END)
-        self.print_tasks()      
+        self.print_tasks()
+        self.status_bar('Marked task ' + str(user_input) + ' as done.')
 
     def clear_tasks(self):
         task_list1.clear_list()    
         self.print_tasks()
+        self.status_bar('Cleared TO-DO-List.')
 
     def info(self):
         self.message_box(task_list1.info())
 
     def export(self):
         task_list1.export()
-        self.message_box('Your Task List is written to data.txt')  
+        self.message_box('Your Task List is written to data.txt')
+        self.status_bar('Exported TO-DO-List to data.txt.')
 
     def importe(self, event):
         task_list1.importe() 
         self.print_tasks()
+        self.status_bar('Imported TO-DO-List from ' + str(task_list1.creation_date) + '.')
 
     def status_bar(self, status_text):
          self.status.config(text  = status_text)
