@@ -70,7 +70,10 @@ class Window:
         self.vscroll.grid(row = 0, column = 1, sticky = 'nsew')
 
         self.exit_button = Button(master, text = 'EXIT', bg = 'red', command = master.quit)
-        self.exit_button.grid(row = 6, column = 1) 
+        self.exit_button.grid(row = 6, column = 1)
+
+        self.status = Label(master, text = '', bd = 1, relief = 'sunken', anchor = W)
+        self.status.grid(row = 7, columnspan = 2, sticky = W+E)
 
     def entry_click(self, event, default_text, entry):
         if entry.get() == default_text:
@@ -95,7 +98,8 @@ class Window:
         user_input = self.add_entry.get()
         task_list1.insert_task(user_input)
         self.add_entry.delete(0, END)
-        self.print_tasks()  
+        self.print_tasks()
+        self.status_bar('Added "' + user_input + '" to TO-DO-List.')
 
     def del_task(self):
         user_input = int(self.del_entry.get())
@@ -128,7 +132,10 @@ class Window:
 
     def importe(self, event):
         task_list1.importe() 
-        self.print_tasks()     
+        self.print_tasks()
+
+    def status_bar(self, status_text):
+         self.status.config(text  = status_text)
 
 root = Tk()
 create_window = Window(root)
