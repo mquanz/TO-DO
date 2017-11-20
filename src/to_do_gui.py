@@ -82,6 +82,7 @@ class Window:
 
     def message_box(self, text):
         messagebox.showinfo('Info', text)
+        
     def warning_box(self):
         result = messagebox.askquestion('Clear', 'Are You Sure?', icon = 'warning')
         if result == 'yes':
@@ -100,6 +101,8 @@ class Window:
         self.add_entry.delete(0, END)
         self.print_tasks()
         self.status_bar('Added "' + user_input + '" to TO-DO-List.')
+        # autoscroll to last element
+        self.text_box.see('end')
 
     def del_task(self):
         user_input = int(self.del_entry.get())
