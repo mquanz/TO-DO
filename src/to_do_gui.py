@@ -1,5 +1,4 @@
 from tkinter import *
-from tkinter import messagebox
 from functions import *
 
 # create instance of class
