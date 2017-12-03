@@ -12,8 +12,8 @@ print('"clear": Clear list')
 print('"info": Information about this list')
 print('"quit": Quit program')
 
-task_list = TaskList()
-print('\nWith starting this program you just created a new list at ' + task_list.creation_date + '!')
+my_list = TaskList()
+print('\nWith starting this program you just created a new list at ' + my_list.creation_date + '!')
 
 while True:
     user_input = input('> ')
@@ -22,29 +22,29 @@ while True:
         position = position + 1
         while user_input[position] == ' ':
             position = position + 1
-        task_list.insert_task(user_input[position:])
+        my_list.insert_task(user_input[position:])
     elif user_input[0:position] == 'delete':
         position = position + 1
         while user_input[position] == ' ':
             position = position + 1
-        task_list.delete_task(int(user_input[position:]))
+        my_list.delete_task(int(user_input[position:]))
     elif user_input == 'print':
-        output_list = show_list(task_list)
+        output_list = show_list(my_list)
         for task in output_list:
             print(task)        
     elif user_input[0:position] == 'mark':
         position = position + 1
         while user_input[position] == ' ':
             position = position + 1
-        task_list.mark_done(int(user_input[position:]))
+        my_list.mark_done(int(user_input[position:]))
     elif user_input == 'export':
-        task_list.export()
+        my_list.export()
     elif user_input == 'import':
-        task_list.importe()
+        my_list.importe()
     elif user_input == 'clear':
-        task_list.clear_list()
+        my_list.clear_list()
     elif user_input == 'info':
-        print(task_list.info())
+        print(my_list.info())
     elif user_input == 'quit':
         break
     else:

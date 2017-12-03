@@ -15,18 +15,6 @@ class TaskList:
     def mark_done(self, number):
         self.task_list[number-1].done = True
 
-#    def print_list(self):
-#        number = 0
-#        output_list = []
-#        for task in self.task_list:
-#            number = number + 1
-#            if task.done:
-#                status = '[x]'
-#            else:
-#                status = '[ ]'
-#            output_list.append(str(number) + ' ' + status + ' ' + task.description)
-#        return output_list
-
     def delete_task(self, number):
         self.task_list.pop(number-1)
 

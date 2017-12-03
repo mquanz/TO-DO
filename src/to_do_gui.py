@@ -3,7 +3,7 @@ from tkinter import messagebox
 from functions import *
 
 # create instance of class
-task_list1 = TaskList()
+my_list = TaskList()
 
 class Window:
 
@@ -90,14 +90,14 @@ class Window:
 
     def print_tasks(self):
         self.text_box.delete(1.0, tk.END)
-        output_list = show_list(task_list1)
+        output_list = show_list(my_list)
         self.text_box.insert(tk.END, 'Your TO-DO-List:') 
         for task in output_list:
             self.text_box.insert(tk.END, '\n' + task)    
 
     def add_task(self):
         user_input = self.add_entry.get()
-        task_list1.insert_task(user_input)
+        my_list.insert_task(user_input)
         self.add_entry.delete(0, tk.END)
         self.print_tasks()
         self.status_bar('Added "' + user_input + '" to TO-DO-List.')
@@ -107,7 +107,7 @@ class Window:
     def del_task(self):
         user_input = int(self.del_entry.get())
         try:
-            task_list1.delete_task(user_input)
+            my_list.delete_task(user_input)
         except IndexError:
             self.message_box('Your number is out of range.')
         self.del_entry.delete(0, tk.END)
@@ -117,7 +117,7 @@ class Window:
     def mark_task(self):
         user_input = int(self.mark_entry.get())
         try:
-            task_list1.mark_done(user_input)
+            my_list.mark_done(user_input)
         except IndexError:
             self.message_box('Your number is out of range.')        
         self.mark_entry.delete(0, tk.END)
@@ -125,22 +125,22 @@ class Window:
         self.status_bar('Marked task ' + str(user_input) + ' as done.')
 
     def clear_tasks(self):
-        task_list1.clear_list()    
+        my_list.clear_list()    
         self.print_tasks()
         self.status_bar('Cleared TO-DO-List.')
 
     def info(self):
-        self.message_box(task_list1.info())
+        self.message_box(my_list.info())
 
     def export(self):
-        task_list1.export()
+        my_list.export()
         self.message_box('Your Task List is written to data.txt')
         self.status_bar('Exported TO-DO-List to data.txt.')
 
     def importe(self, event):
-        task_list1.importe() 
+        my_list.importe() 
         self.print_tasks()
-        self.status_bar('Imported TO-DO-List from ' + str(task_list1.creation_date) + '.')
+        self.status_bar('Imported TO-DO-List from ' + str(my_list.creation_date) + '.')
 
     def status_bar(self, status_text):
          self.status.config(text  = status_text)
