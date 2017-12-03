@@ -90,7 +90,7 @@ class Window:
 
     def print_tasks(self):
         self.text_box.delete(1.0, tk.END)
-        output_list = task_list1.print_list()
+        output_list = show_list(task_list1)
         self.text_box.insert(tk.END, 'Your TO-DO-List:') 
         for task in output_list:
             self.text_box.insert(tk.END, '\n' + task)    
