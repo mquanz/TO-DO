@@ -38,13 +38,13 @@ while True:
             position = position + 1
         my_list.mark_done(int(user_input[position:]))
     elif user_input == 'export':
-        my_list.export()
+        export(my_list)
     elif user_input == 'import':
-        my_list.importe()
+        importe(my_list)
     elif user_input == 'clear':
         my_list.clear_list()
     elif user_input == 'info':
-        print(my_list.info())
+        print(info(my_list))
     elif user_input == 'quit':
         break
     else:

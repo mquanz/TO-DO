@@ -18,38 +18,9 @@ class TaskList:
     def delete_task(self, number):
         self.task_list.pop(number-1)
 
-    def serialize(self):
-        dicts = [task.__dict__ for task in self.task_list]
-        dicts.append({"creation" : self.creation_date})
-        return json.dumps(dicts)
-
-    def deserialize(self, json_string):
-        dicts = json.loads(json_string)
-        tasks = []        
-        for dic in dicts:
-            if 'description' in dic.keys():
-                tasks.append(Task(dic['description'],dic['done']))
-            else:
-                self.creation_date = dic['creation']
-        self.task_list = tasks
-        return self
-
-    def export(self):
-        obj = open(FILENAME, 'wb')
-        obj.write(self.serialize().encode('utf-8'))
-        obj.close
-
-    def importe(self):
-        obj = open(FILENAME, 'r')
-        self.deserialize(obj.read())
-        obj.close
-
     def clear_list(self):
         self.task_list = []
-
-    def info(self):
-        return 'This TaskList was created at ' + self.creation_date + ' and contains ' + str(len(self.task_list)) + ' tasks.'
-        
+                
 class Task:
 
     def __init__(self, description, done = False):
@@ -67,3 +38,32 @@ def show_list(instance):
             status = '[ ]'
         output_list.append(str(number) + ' ' + status + ' ' + task.description)
     return output_list
+
+def serialize(instance):
+    dicts = [task.__dict__ for task in instance.task_list]
+    dicts.append({"creation" : instance.creation_date})
+    return json.dumps(dicts)
+
+def deserialize(instance, json_string):
+    dicts = json.loads(json_string)
+    tasks = []        
+    for dic in dicts:
+        if 'description' in dic.keys():
+            tasks.append(Task(dic['description'],dic['done']))
+        else:
+            instance.creation_date = dic['creation']
+    instance.task_list = tasks
+    return instance
+
+def export(instance):
+    obj = open(FILENAME, 'wb')
+    obj.write(serialize(instance).encode('utf-8'))
+    obj.close
+
+def importe(instance):
+    obj = open(FILENAME, 'r')
+    deserialize(instance, obj.read())
+    obj.close
+
+def info(instance):
+    return 'This TaskList was created at ' + instance.creation_date + ' and contains ' + str(len(instance.task_list)) + ' tasks.'

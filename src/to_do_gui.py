@@ -130,15 +130,15 @@ class Window:
         self.status_bar('Cleared TO-DO-List.')
 
     def info(self):
-        self.message_box(my_list.info())
+        self.message_box(info(my_list))
 
     def export(self):
-        my_list.export()
+        export(my_list)
         self.message_box('Your Task List is written to data.txt')
         self.status_bar('Exported TO-DO-List to data.txt.')
 
     def importe(self, event):
-        my_list.importe() 
+        importe(my_list) 
         self.print_tasks()
         self.status_bar('Imported TO-DO-List from ' + str(my_list.creation_date) + '.')
 
