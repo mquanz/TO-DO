@@ -1,17 +1,8 @@
 from functions import *
     
 print('Welcome to TO-DO-List!\n')
-print('Commands:')
-print('"add <element>": Add element to the TO-DO-List')
-print('"print": Print the TO-DO-List')
-print('"delete <number>": Delete an element')
-print('"mark <number>": Mark done element')
-print('"export": Export list in data.txt')
-print('"import": Import list from data.txt')
-print('"clear": Clear list')
-print('"info": Information about this list')
-print('"quit": Quit program')
-
+help = 'Commands:\n"add <element>": Add element to the TO-DO-List\n"print": Print the TO-DO-List\n"delete <number>": Delete an element\n"mark <number>": Mark done element\n"export": Export list in data.txt\n"import": Import list from data.txt\n"clear": Clear list\n"info": Information about this list\n"help": List of commands\n"quit": Quit program'
+print(help)
 my_list = TaskList()
 print('\nWith starting this program you just created a new list at ' + my_list.creation_date + '!')
 
@@ -23,8 +14,7 @@ while True:
     elif user_list[0] == 'delete':
         my_list.delete_task(int(user_list[1]))
     elif user_input == 'print':
-        output_list = show_list(my_list)
-        for task in output_list:
+        for task in show_list(my_list):
             print(task)        
     elif user_list[0] == 'mark':
         my_list.mark_done(int(user_list[1]))
@@ -36,7 +26,9 @@ while True:
         my_list.clear_list()
     elif user_input == 'info':
         print(info(my_list))
+    elif user_input == 'help':
+        print(help)
     elif user_input == 'quit':
         break
     else:
-        print('Please repeat the input.')
+        print('Invalid input. Type "help" to see possible commands.')
