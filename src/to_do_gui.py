@@ -17,6 +17,7 @@ class Window:
         self.add_entry = tk.Entry(master, width = 32, fg = 'grey') 
         self.add_entry.insert(0, 'Enter a task here...')
         self.add_entry.bind('<Button-1>', lambda event: self.entry_click(event, 'Enter a task here...', self.add_entry))
+        self.add_entry.bind('<Return>', lambda event: self.add_task())
         self.add_entry.grid(row = 1)
 
         self.add_button = tk.Button(master, text = 'ADD', bg = 'green', command = self.add_task)
